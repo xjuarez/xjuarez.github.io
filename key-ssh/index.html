@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>Generador de SSH KEY</title>
+  <script>module = {};</script>
+  <script src="js/base64url.js"></script>
+  <script src="js/ssh-util.js"></script>
+  <script src="js/js-keygen-ui.js"></script>
+  <script src="js/js-keygen.js"></script>
+  <link rel="stylesheet" href="js/js-keygen.css">
+  <link rel="icon" type="image/png" href="key.png">
+</head>
+
+<body>
+  <div id="content">
+    <h1>Generador de SSH KEY</h1>
+
+    Genere un par de claves para usar con openSSH.
+    <br> Cualquier error favor de reportarlo a
+    <a href="mailto:soporteinfra@fincomun.com.mx">SoporteInfra</a>.
+    <br>
+
+    <hr>
+      <div>
+        <label for="name">Nombre:</label>
+        <input id="name" type="text" value="" required>
+      </div>
+      <div>
+        <label for="passphrase">Contraseña:</label>
+        <input id="passphrase" type="password" value="" required>
+      </div>
+      <div>
+        <label for="alg" style="display:none;">Algorithm:</label>
+        <select id="alg" disabled>
+          <option value="RSASSA-PKCS1-v1_5" selected>RSASSA-PKCS1-v1_5</option>
+          <option value="RSA-PSS">RSA-PSS</option>
+          <option value="ECDSA">ECDSA</option>
+        </select>
+      </div>
+      <div>
+        <label for="size" style="display:none;">Size:</label>
+        <select id="size" disabled>
+          <option value="1024">1024</option>
+          <option value="2048">2048</option>
+          <option value="4096" selected>4096</option>
+        </select>
+      </div>
+      <div>
+        <label for="hash" style="display:none;">Hash:</label>
+        <select id="hash" disabled>
+          <option value="SHA-1">SHA-1</option>
+          <option value="SHA-256">SHA-256</option>
+          <option value="SHA-384">SHA-384</option>
+          <option value="SHA-512" selected>SHA-512</option>
+        </select>
+      </div>
+    <label for="generate"></label>
+    <button id="generate">Generar</button>
+    <br>
+
+    <div id="result" style="display:none;">
+      <hr>
+      <a id="private" style="display: none;" href="" download="id_rsa">id_rsa</a>
+      <a id="public" style="display: none;" href="" download="id_rsa.pub">id_rsa.pub</a>
+      Private Key
+      <button id="copyPrivate">Copiar</button> or
+      <button id="savePrivate">Guardar</button>
+      <br>
+      <textarea id="privateKey" style="height: 150px;" spellcheck="false"></textarea>
+
+      <hr> Public Key
+      <button id="copyPublic">Copiar</button> or
+      <button id="savePublic">Guardar</button>
+      <br>
+      <textarea id="publicKey" spellcheck="false"></textarea>
+    </div>
+    <hr> Creado por SoporteInfra
+  </div>
+</body>
+</html>
