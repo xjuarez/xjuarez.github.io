@@ -1,0 +1,18 @@
+name: Build and Deploy Jekyll Site
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 3.1
+      - run: gem install bundler
+      - run: bundle install
+      - run: bundle exec jekyll build
